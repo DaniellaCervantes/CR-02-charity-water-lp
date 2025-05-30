@@ -1,19 +1,399 @@
-/* charity: water Brand Colors & Fonts
+/* Font fallback stack */
+body {
+  /* Use a simple, beginner-friendly font stack without Proxima Nova */
+  font-family: 'Avenir', Arial, sans-serif;
+  margin: 0;
+  color: #333;
+}
 
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
+header {
+  background: #f8f8f8;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
+header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #000;
 
-Fonts:
-- Proxima Nova
-- Avenir
+}
 
-*/
+/* Add a hover effect for navigation links */
+header nav a:hover {
+  color: #FFC907; /* Changes text color to yellow on hover */
+  text-decoration: underline; /* Underlines the link on hover */
+}
+
+.highlight-link {
+  color: hsl(47, 100%, 51%);
+}
+
+.hero {
+  /* This sets the background image for the hero section */
+  background: url('img/Madagascar_2019_CG-4246.jpg') no-repeat center bottom/cover;
+  color: white;
+  /* Make the hero section fill the screen before scrolling */
+  min-height: 93vh; /* 100% of the viewport height */
+  padding: 0 20px;   /* Remove top padding so image fits before the fold */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap; /* Allows items to move to the next line on small screens */
+  position: relative; /* Needed for absolute children */
+}
+
+/* Add a new container to stack hero text and donation box vertically */
+.hero-content {
+  /* Use flexbox to stack items vertically */
+  display: flex;
+  flex-direction: column; /* Stack children from top to bottom */
+  align-items: flex-end;   /* Align items to the right */
+}
+
+.hero-text {
+  max-width: 500px;
+  margin-bottom: 20px; /* Less space below the hero text */
+}
+
+.hero-text h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  color: #fff; /* Make the text white */
+  text-align: right; /* Aligns the heading text to the right */
+  padding-right: 0px; /* Move the heading more to the left */
+  font-weight: 700; /* Make the heading extra bold */
+  line-height: 1; /* Decrease the space between lines */
+}
+
+.hero-text p {
+  font-size: 10px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.donation-box {
+  background: white;
+  color: #000;
+  border-radius: 16px;
+  padding: 15px; /* Decreased padding for a more compact look */
+  max-width: 420px;
+  min-height: 20px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  margin-top: 0px; /* Less space above the donation box */
+  border: 1px solid #111; /* Add a skinny black border to match tab buttons */
+  /* Add this to make all buttons inside the donation box the same width */
+}
+
+.donation-box .amounts button,
+.donation-box .placeholder-btn,
+.donation-box .give-btn {
+  width: 100%; /* Make all buttons in the donation box the same width */
+  box-sizing: border-box; /* Include padding and border in the width */
+  height: 48px; /* Set the same height for all buttons */
+}
+
+/* Tab button row for "Give Once" and "Give Monthly" */
+.tab-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 0px auto; /* Decreased margin below the tab buttons */
+  gap: 10px;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* Style tab buttons to match donation amount buttons */
+.tab-btn {
+  /* Set each tab button to 200px wide so two fit the 400px donation box */
+  width: 220px;
+  /* Remove flex:1 so width works correctly */
+  /* flex:1 */
+  padding: 10px 0;
+  border: 1px solid #111; /* Skinny black border */
+  background: #fff;       /* Always white */
+  color: #000;            /* Always black text */
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  outline: none;
+  margin: 0; /* Remove default margin */
+}
+
+/* Make "Give Once" button always have a white background, even when active */
+.tab-btn.active {
+  background: #fff;
+  color: #000;
+  border: 1px solid #111;
+}
+
+/* Only add yellow background and border on hover (not when active) */
+.tab-btn:hover {
+  background: #FFC907;
+  color: #000;
+  border: 1px solid #FFC907;
+}
+
+/* Donation box headline and supporting text */
+.donation-headline {
+  font-size: 16px; /* Smaller font size for the headline */
+  font-weight: bold; /* Make the headline bold */
+  margin-top: 0; /* Remove space above the headline */
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.donation-support {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 18px;
+}
+
+/* Amount buttons */
+.amounts {
+  margin-bottom: 4px; /* Less space below the amount buttons */
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.amounts button {
+  margin: 5px;
+  padding: 10px 50px;
+  border: 2px solid #ccc;      /* Match placeholder button border color */
+  background: #fafafa;         /* Match placeholder button background */
+  color: #888;                 /* Match placeholder button text color */
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+
+/* Keep the hover and active styles for yellow highlight */
+.amounts .active,
+.amounts button:hover {
+  background: #FFC907;
+  color: #000;
+  border: 1px solid #FFC907;
+}
+
+/* Stack input fields vertically with spacing */
+.donation-box input {
+  margin: 10px 0;
+  padding: 10px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA button */
+.give-btn {
+  background: #FFC907;
+  color: #000;
+  border: none;
+  padding: 14px 0;
+  width: 100%;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.give-btn:hover {
+  background: #e6b800;
+}
+
+/* Style for the "GIVE" button in the navigation bar */
+.give-btn-nav {
+  /* Make it look like a button with the charity: water yellow */
+  background: #FFC907;
+  color: #000;
+  padding: 5px 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  margin-left: 10px;
+  transition: background 0.2s, color 0.2s;
+  /* Add a little shadow for a button effect */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: inline-block; /* Make sure it looks like a button */
+}
+
+/* Hover effect for the "GIVE" button */
+.give-btn-nav:hover {
+  background: #e6b800;
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Payment icons row */
+.payment-icons {
+  margin: 8px 0 0px 0; /* Decreased space above payment icons */
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  font-size: 28px; /* Make emoji/icons bigger */
+}
+
+/* Make payment buttons look like just the image, no border or background */
+.payment-icons button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Add a smooth transition for hover effect */
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Add a simple hover effect for payment buttons */
+.payment-icons button:hover {
+  /* Slightly enlarge the icon and add a soft shadow */
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Remove any outline on focus for simplicity */
+.payment-icons button:focus {
+  outline: none;
+}
+
+/* Make payment icon images a reasonable size for visibility */
+.payment-icons img {
+  display: block;
+  max-width: 100%;
+  height: 60px; /* Make payment icons the same height as the "Give Now" button */
+  width: auto;
+}
+
+/* Supporting note */
+.supporting-note {
+  font-size: 13px;
+  color: #444;
+  margin-top: 8px;
+}
+
+.supporting-note .underline {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.social-proof {
+  background: #000;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.highlight {
+  color: #FFC907;
+  font-weight: bold;
+}
+
+/* Container to put placeholder buttons side by side */
+.placeholder-row {
+  display: flex; /* Put children in a row */
+  justify-content: center; /* Center the buttons */
+  gap: 10px; /* Space between the buttons */
+}
+
+/* Style for placeholder buttons to look like input fields */
+.placeholder-btn {
+  /* Make the width similar to the amount buttons */
+  padding: 10px 40px; /* Same left/right padding as .amounts button */
+  margin: 5px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background: #fafafa;
+  color: #888;
+  font-size: 14px; /* Match the font size of the main buttons */
+  height: 48px; /* Ensure same height as other buttons */
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  /* Remove width: 48% so button size is based on padding, like amount buttons */
+  white-space: nowrap; /* Prevents the text from wrapping to a new line */
+  padding: 8px 10px;   /* Adjusts padding so the button isn't too wide */
+}
+
+/* Hover effect for placeholder buttons */
+.placeholder-btn:hover {
+  background: #FFC907;
+  color: #000;
+  border: 1px solid #FFC907;
+}
+
+/* Water droplet emoji animation for the shower effect */
+.droplet-emoji {
+  /* Start above the screen */
+  position: fixed;
+  top: -40px;
+  font-size: 2rem;
+  pointer-events: none; /* So droplets don't block clicks */
+  z-index: 9999;
+  /* Animation for falling down */
+  animation-name: droplet-fall;
+  animation-timing-function: linear;
+  /* Duration and delay are set inline by JavaScript */
+}
+
+@keyframes droplet-fall {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh);
+  }
+}
+
+/* Social proof message at the bottom left of the hero image */
+.social-proof-bottom {
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity for a faded look */
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 20px;    /* Make the text larger */
+  font-weight: bold;  /* Make the text bold */
+  opacity: 1; /* Make sure the text is fully visible */
+  z-index: 2;
+  /* Students: This class puts the message in the bottom left corner of the hero section with a faded background */
+}
+
+/* Group the Give button and payment icons together and move them down */
+.give-and-pay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; /* Space between the button and the icons */
+  margin-top: 0px; /* Decreased margin above the Give Now button */
+}

@@ -1,12 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charity: Water</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Add your HTML here -->
+
+  <header>
+    <!-- Replace the text logo with the image logo for charity: water -->
+    <div>
+      <!-- Students: This is the logo image for the website header -->
+      <img src="img/haritywater_logo_horizontal_BlackText (2).png" alt="charity: water logo" style="height:40px;">
+    </div>
+    <nav>
+      <a href="#">GET INVOLVED</a>
+      <a href="#">MEET THE MISSION</a>
+      <a href="#">STUDENT HUB</a>
+      <a href="#">WHY WATER?</a>
+      <!-- Students: This is a button styled link for "GIVE 💧" to make it stand out -->
+      <a href="#" class="give-btn-nav">GIVE 💧</a>
+    </nav>
+  </header>
+
+  <!-- The hero section now has a background image using inline CSS -->
+  <section class="hero" style="background-image: url('img/Madagascar_2019_CG-4246.jpg'); background-size: cover; background-position: center;">
+    <!-- New container to stack hero text and donation box -->
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>WATER YOU<br>CAN BELIEVE IN</h1>
+        <!-- Tab buttons for giving type, now under the h1 and outside the donation box -->
+        <div class="tab-row">
+          <!-- "Give Once" is already a button, but let's add a comment to help students understand -->
+          <!-- Students: This is a button for one-time giving -->
+          <button class="tab-btn active">Give Once</button>
+          <button class="tab-btn">Give Monthly</button>
+        </div>
+      </div>
+
+      <div class="donation-box">
+        <!-- Headline and supporting text -->
+        <div class="donation-headline">One quick gift delivers clean water and lasting hope - real lives with real stories and real change.</div>
+        <!-- Students: This is a horizontal dashed line for visual separation -->
+        <hr style="border: none; border-top: 1px dashed #ccc; margin: 10px 0;">
+        <!-- Amount buttons -->
+        <div class="amounts">
+          <button>$5</button>
+          <button >$10</button>
+          <button>$15</button>
+        </div>
+        <!-- Place the placeholder buttons in a container for side-by-side layout -->
+        <div class="placeholder-row">
+          <button class="placeholder-btn">Other amount</button>
+          <button class="placeholder-btn">Start a campus fundraiser</button>
+        </div>
+        <!-- Move down the Give Now button and payment icons by wrapping them in a container with extra margin on top -->
+        <div class="give-and-pay">
+          <!-- Students: This button now takes users to a thank you page -->
+          <a href="thankyou.html" class="give-btn">Give Water Now</a>
+          <!-- Payment icons row (now using buttons for hover effect) -->
+          <div class="payment-icons">
+            <!-- Students: Each payment icon is now a link that opens in a new tab -->
+            <a href="https://venmo.com/" target="_blank" rel="noopener">
+              <button title="Venmo">
+                <img src="img/App_Icon.webp" alt="Venmo" style="width:24px; height:24px;">
+              </button>
+            </a>
+            <a href="https://www.apple.com/apple-pay/" target="_blank" rel="noopener">
+              <button title="Apple Pay">
+                <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt="Apple Pay" style="width:40px; height:24px;">
+              </button>
+            </a>
+            <a href="https://cash.app/" target="_blank" rel="noopener">
+              <button title="Cash App">
+                <img src="img/Square_Cash_app_logo.svg.png" alt="Cash App" style="width:24px; height:24px;">
+              </button>
+            </a>
+          </div>
+        </div>
+        <!-- Students: This is a horizontal dashed line for visual separation -->
+        <hr style="border: none; border-top: 1px dashed #ccc; margin: 10px 0;">
+        <!-- Supporting note -->
+        <div class="supporting-note">
+          Just $10 gives one person access to clean water for an <span class="underline">entire year</span>.
+        </div>
+      </div>
+    </div>
+    <!-- Students: This puts the social proof message at the bottom right of the hero image -->
+    <div class="social-proof-bottom">
+      Join <span class="highlight" id="student-count">0</span> students who gave this month
+    </div>
+  </section>
+
+  <!-- Students: This script adds a water droplet shower effect when the "Give Water Now" button is clicked -->
+  <script>
+    // Wait until the page is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find the "Give Water Now" button
+      var giveBtn = document.querySelector('.give-btn');
+      if (giveBtn) {
+        giveBtn.addEventListener('click', function(e) {
+          // Number of droplets
+          var dropletCount = 30;
+          for (var i = 0; i < dropletCount; i++) {
+            // Create a span for the droplet
+            var droplet = document.createElement('span');
+            droplet.textContent = '💧';
+            droplet.className = 'droplet-emoji';
+            // Random horizontal position
+            droplet.style.left = (Math.random() * 100) + 'vw';
+            // Random animation duration and delay
+            droplet.style.animationDuration = (1 + Math.random() * 1.5) + 's';
+            droplet.style.animationDelay = (Math.random() * 0.5) + 's';
+            // Add to the body
+            document.body.appendChild(droplet);
+            // Remove after animation
+            droplet.addEventListener('animationend', function() {
+              this.remove();
+            });
+          }
+        });
+      }
+    });
+  </script>
+  <script>
+    // Students: This script animates the number in the social proof box from 0 to 1,242
+    document.addEventListener('DOMContentLoaded', function() {
+      // ...existing code for droplet effect...
+
+      // Count up animation for the student count
+      var countEl = document.getElementById('student-count');
+      var target = 1242; // The final number to count up to
+      var duration = 2200; // Animation duration in milliseconds (slower)
+      var start = 0;
+      var startTime = null;
+
+      function countUpStep(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var progress = timestamp - startTime;
+        var current = Math.min(Math.floor(progress / duration * target), target);
+        countEl.textContent = current.toLocaleString();
+        if (current < target) {
+          requestAnimationFrame(countUpStep);
+        } else {
+          countEl.textContent = target.toLocaleString();
+        }
+      }
+
+      if (countEl) {
+        requestAnimationFrame(countUpStep);
+      }
+    });
+  </script>
 </body>
 </html>
