@@ -15,34 +15,52 @@ header {
 }
 
 header nav a {
-  margin: 0 10px;
+  /* Students: Make navigation buttons have a transparent background and no border */
+  margin: 0 3px; /* Smaller margin to bring buttons closer together */
   text-decoration: none;
   color: #000;
-
+  font-weight: normal;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer; /* Show pointer cursor on hover */
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Add a hover effect for navigation links */
 header nav a:hover {
-  color: #FFC907; /* Changes text color to yellow on hover */
-  text-decoration: underline; /* Underlines the link on hover */
+  background: #FFC907;
+  color: #000;
+  text-decoration: none;
 }
 
 .highlight-link {
-  color: hsl(47, 100%, 51%);
+  color: #000; /* Students: Make the "GIVE" button in the nav bar black */
+  background: #FFC907; /* Students: Add yellow background to match the brand */
+  border-radius: 6px;  /* Rounded corners like other buttons */
+  padding: 8px 16px;   /* Same padding as other nav buttons */
+  /* Keep the button shape even if used as a link */
+  transition: background 0.2s, color 0.2s; /* Smooth transition for hover */
+}
+
+/* Students: Add a hover effect for the "GIVE" button in the nav bar */
+.highlight-link:hover {
+  background: #e6b800; /* Slightly darker yellow on hover */
+  color: #000;         /* Keep text black on hover */
 }
 
 .hero {
   /* This sets the background image for the hero section */
   background: url('img/Madagascar_2019_CG-4246.jpg') no-repeat center bottom/cover;
   color: white;
-  /* Make the hero section fill the screen before scrolling */
-  min-height: 93vh; /* 100% of the viewport height */
+  /* Students: Make the hero section fill the entire screen before scrolling */
+  min-height: 95vh; /* Increased from 90vh to 100vh for a bigger hero image */
   padding: 0 20px;   /* Remove top padding so image fits before the fold */
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-wrap: wrap; /* Allows items to move to the next line on small screens */
-  position: relative; /* Needed for absolute children */
+  position: relative; /* Needed for absolute positioning inside */
 }
 
 /* Add a new container to stack hero text and donation box vertically */
@@ -66,6 +84,7 @@ header nav a:hover {
   padding-right: 0px; /* Move the heading more to the left */
   font-weight: 700; /* Make the heading extra bold */
   line-height: 1; /* Decrease the space between lines */
+  animation: fadeSlideUp 1.2s ease-out; /* Students: Add animation for fade and slide up */
 }
 
 .hero-text p {
@@ -123,18 +142,19 @@ header nav a:hover {
   color: #000;            /* Always black text */
   font-weight: bold;
   font-size: 16px;
-  cursor: pointer;
+  cursor: pointer; /* Show pointer cursor on hover */
+  user-select: none; /* Prevent text selection on double click */
   border-radius: 6px;
   transition: background 0.2s, color 0.2s, border 0.2s;
   outline: none;
   margin: 0; /* Remove default margin */
 }
 
-/* Make "Give Once" button always have a white background, even when active */
+/* Style for the selected (clicked) tab button */
 .tab-btn.active {
-  background: #fff;
-  color: #000;
-  border: 1px solid #111;
+  background: #FFC907;   /* Yellow background when selected */
+  color: #000;           /* Black text when selected */
+  border: 1px solid #FFC907;
 }
 
 /* Only add yellow background and border on hover (not when active) */
@@ -161,15 +181,15 @@ header nav a:hover {
 
 /* Amount buttons */
 .amounts {
-  margin-bottom: 4px; /* Less space below the amount buttons */
+  margin-bottom: 4px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 4px; /* Smaller gap between amount buttons */
 }
 
 .amounts button {
-  margin: 5px;
-  padding: 10px 50px;
+  margin: 2px;           /* Smaller margin between buttons */
+  padding: 10px 40px;    /* Slightly less padding for a tighter look */
   border: 2px solid #ccc;      /* Match placeholder button border color */
   background: #fafafa;         /* Match placeholder button background */
   color: #888;                 /* Match placeholder button text color */
@@ -213,42 +233,38 @@ header nav a:hover {
   cursor: pointer;
   border-radius: 6px;
   transition: background 0.3s;
+  /* Students: Add a pulse animation to draw attention */
+  animation: pulse 1.6s infinite;
 }
 
 .give-btn:hover {
   background: #e6b800;
+  /* Students: Stop the pulse animation on hover for a steady look */
+  animation: none;
 }
 
-/* Style for the "GIVE" button in the navigation bar */
-.give-btn-nav {
-  /* Make it look like a button with the charity: water yellow */
-  background: #FFC907;
-  color: #000;
-  padding: 5px 15px;
-  border-radius: 6px;
-  font-weight: bold;
-  text-decoration: none;
-  border: none;
-  margin-left: 10px;
-  transition: background 0.2s, color 0.2s;
-  /* Add a little shadow for a button effect */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  display: inline-block; /* Make sure it looks like a button */
-}
-
-/* Hover effect for the "GIVE" button */
-.give-btn-nav:hover {
-  background: #e6b800;
-  color: #000;
-  text-decoration: underline;
+/* Students: Keyframes for the pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255,201,7, 0.5);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 16px 8px rgba(255,201,7, 0.25);
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255,201,7, 0.5);
+    transform: scale(1);
+  }
 }
 
 /* Payment icons row */
 .payment-icons {
-  margin: 8px 0 0px 0; /* Decreased space above payment icons */
+  margin: 8px 0 0px 0;
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 8px; /* Smaller gap between payment buttons */
   font-size: 28px; /* Make emoji/icons bigger */
 }
 
@@ -299,12 +315,21 @@ header nav a:hover {
   font-weight: bold;
 }
 
+/* Social proof message anchored to the bottom-left of the hero section */
 .social-proof {
-  background: #000;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background: rgba(0,0,0,0.4); /* Students: Made the background even more transparent */
   color: #fff;
   padding: 15px;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  opacity: 0.95;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin: 0;
 }
 
 .highlight {
@@ -316,14 +341,14 @@ header nav a:hover {
 .placeholder-row {
   display: flex; /* Put children in a row */
   justify-content: center; /* Center the buttons */
-  gap: 10px; /* Space between the buttons */
+  gap: 4px; /* Smaller gap between placeholder buttons */
 }
 
 /* Style for placeholder buttons to look like input fields */
 .placeholder-btn {
   /* Make the width similar to the amount buttons */
   padding: 10px 40px; /* Same left/right padding as .amounts button */
-  margin: 5px;
+  margin: 2px;           /* Smaller margin between buttons */
   border: 2px solid #ccc;
   border-radius: 5px;
   background: #fafafa;
@@ -345,55 +370,332 @@ header nav a:hover {
   border: 1px solid #FFC907;
 }
 
-/* Water droplet emoji animation for the shower effect */
-.droplet-emoji {
-  /* Start above the screen */
-  position: fixed;
-  top: -40px;
-  font-size: 2rem;
-  pointer-events: none; /* So droplets don't block clicks */
-  z-index: 9999;
-  /* Animation for falling down */
-  animation-name: droplet-fall;
-  animation-timing-function: linear;
-  /* Duration and delay are set inline by JavaScript */
-}
-
-@keyframes droplet-fall {
-  0% {
-    opacity: 1;
-    transform: translateY(0);
+/* Students: Animation for the hero headline to fade in and slide up */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;         /* Start invisible */
+    transform: translateY(40px); /* Start lower */
   }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(100vh);
+  to {
+    opacity: 1;         /* End fully visible */
+    transform: translateY(0);    /* End at normal position */
   }
 }
 
-/* Social proof message at the bottom left of the hero image */
-.social-proof-bottom {
-  position: absolute;
-  left: 30px;
-  bottom: 30px;
-  background: rgba(0, 0, 0, 0.6); /* Black with 60% opacity for a faded look */
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  font-size: 20px;    /* Make the text larger */
-  font-weight: bold;  /* Make the text bold */
-  opacity: 1; /* Make sure the text is fully visible */
-  z-index: 2;
-  /* Students: This class puts the message in the bottom left corner of the hero section with a faded background */
+/* Students: Dropdown menu for "Get Involved" in the navigation bar */
+.get-involved-dropdown {
+  position: relative; /* Needed so the dropdown list is positioned below */
+  display: inline-block; /* Keep it inline with other nav items */
 }
 
-/* Group the Give button and payment icons together and move them down */
-.give-and-pay {
+.get-involved-dropdown-content {
+  display: none; /* Hide the dropdown by default */
+  position: absolute; /* Position below the button */
+  background-color: #fff; /* White background */
+  min-width: 200px; /* Set a minimum width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Soft shadow */
+  border-radius: 6px; /* Rounded corners */
+  z-index: 1; /* Make sure it appears above other elements */
+  margin-top: 6px; /* Space below the button */
+  padding: 0; /* Remove default padding */
+}
+
+/* Show the dropdown when hovering over the container */
+.get-involved-dropdown:hover .get-involved-dropdown-content {
+  display: block;
+}
+
+/* Style for each dropdown link */
+.get-involved-dropdown-content a {
+  color: #000; /* Black text */
+  padding: 12px 18px; /* Space inside each link */
+  text-decoration: none; /* No underline */
+  display: block; /* Make links fill the dropdown width */
+  border-bottom: 1px solid #eee; /* Light line between items */
+  font-size: 15px;
+  background: #fff;
+  transition: background 0.2s;
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Remove border from last item */
+.get-involved-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Highlight dropdown link on hover */
+.get-involved-dropdown-content a:hover {
+  background: #FFC907; /* Yellow background on hover */
+  color: #000;         /* Keep text black */
+}
+
+/* Students: Dropdown menu for "Meet the Mission" in the navigation bar */
+.meet-mission-dropdown {
+  position: relative; /* Needed so the dropdown list is positioned below */
+  display: inline-block; /* Keep it inline with other nav items */
+}
+
+.meet-mission-dropdown-content {
+  display: none; /* Hide the dropdown by default */
+  position: absolute; /* Position below the button */
+  background-color: #fff; /* White background */
+  min-width: 200px; /* Set a minimum width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Soft shadow */
+  border-radius: 6px; /* Rounded corners */
+  z-index: 1; /* Make sure it appears above other elements */
+  margin-top: 6px; /* Space below the button */
+  padding: 0; /* Remove default padding */
+}
+
+/* Show the dropdown when hovering over the container */
+.meet-mission-dropdown:hover .meet-mission-dropdown-content {
+  display: block;
+}
+
+/* Style for each dropdown link */
+.meet-mission-dropdown-content a {
+  color: #000; /* Black text */
+  padding: 12px 18px; /* Space inside each link */
+  text-decoration: none; /* No underline */
+  display: block; /* Make links fill the dropdown width */
+  border-bottom: 1px solid #eee; /* Light line between items */
+  font-size: 15px;
+  background: #fff;
+  transition: background 0.2s;
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Remove border from last item */
+.meet-mission-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Highlight dropdown link on hover */
+.meet-mission-dropdown-content a:hover {
+  background: #FFC907; /* Yellow background on hover */
+  color: #000;         /* Keep text black */
+}
+
+/* Students: Dropdown menu for "Student Hub" in the navigation bar */
+.student-hub-dropdown {
+  position: relative; /* Needed so the dropdown list is positioned below */
+  display: inline-block; /* Keep it inline with other nav items */
+}
+
+.student-hub-dropdown-content {
+  display: none; /* Hide the dropdown by default */
+  position: absolute; /* Position below the button */
+  background-color: #fff; /* White background */
+  min-width: 220px; /* Set a minimum width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Soft shadow */
+  border-radius: 6px; /* Rounded corners */
+  z-index: 1; /* Make sure it appears above other elements */
+  margin-top: 6px; /* Space below the button */
+  padding: 0; /* Remove default padding */
+}
+
+/* Show the dropdown when hovering over the container */
+.student-hub-dropdown:hover .student-hub-dropdown-content {
+  display: block;
+}
+
+/* Style for each dropdown link */
+.student-hub-dropdown-content a {
+  color: #000; /* Black text */
+  padding: 12px 18px; /* Space inside each link */
+  text-decoration: none; /* No underline */
+  display: block; /* Make links fill the dropdown width */
+  border-bottom: 1px solid #eee; /* Light line between items */
+  font-size: 15px;
+  background: #fff;
+  transition: background 0.2s;
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Remove border from last item */
+.student-hub-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Highlight dropdown link on hover */
+.student-hub-dropdown-content a:hover {
+  background: #FFC907; /* Yellow background on hover */
+  color: #000;         /* Keep text black */
+}
+
+/* Students: Dropdown menu for "Why Water?" in the navigation bar */
+.why-water-dropdown {
+  position: relative; /* Needed so the dropdown list is positioned below */
+  display: inline-block; /* Keep it inline with other nav items */
+}
+
+.why-water-dropdown-content {
+  display: none; /* Hide the dropdown by default */
+  position: absolute; /* Position below the button */
+  background-color: #fff; /* White background */
+  min-width: 220px; /* Set a minimum width */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Soft shadow */
+  border-radius: 6px; /* Rounded corners */
+  z-index: 1; /* Make sure it appears above other elements */
+  margin-top: 6px; /* Space below the button */
+  padding: 0; /* Remove default padding */
+}
+
+/* Show the dropdown when hovering over the container */
+.why-water-dropdown:hover .why-water-dropdown-content {
+  display: block;
+}
+
+/* Style for each dropdown link */
+.why-water-dropdown-content a {
+  color: #000; /* Black text */
+  padding: 12px 18px; /* Space inside each link */
+  text-decoration: none; /* No underline */
+  display: block; /* Make links fill the dropdown width */
+  border-bottom: 1px solid #eee; /* Light line between items */
+  font-size: 15px;
+  background: #fff;
+  transition: background 0.2s;
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+
+/* Remove border from last item */
+.why-water-dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+/* Highlight dropdown link on hover */
+.why-water-dropdown-content a:hover {
+  background: #FFC907; /* Yellow background on hover */
+  color: #000;         /* Keep text black */
+}
+
+/* Students: Make the campus fundraiser form look like one seamless card with no inner shadow or borders */
+.campus-fundraiser-form {
+  width: 440px;           /* Match combined width of the two tab buttons */
+  max-width: 100%;        /* Prevent overflow on small screens */
+  margin: 0 auto;         /* Center the form horizontally */
+  padding: 24px 0 20px 0;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 18px;
+  box-shadow: none;
+  border: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Space between the button and the icons */
-  margin-top: 0px; /* Decreased margin above the Give Now button */
+  gap: 16px;
+}
+
+/* Students: Make input fields and submit button fit inside the form and align with the card */
+.campus-fundraiser-form input[type="text"],
+.campus-fundraiser-form input[type="email"],
+.campus-fundraiser-form .give-btn {
+  width: 90%;           /* Fill most of the form width, leave space at sides */
+  max-width: 380px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Students: Make the campus fundraiser form the same width as the two tab buttons (220px x 2 = 440px) and align it */
+.campus-fundraiser-form {
+  width: 440px;           /* Match combined width of the two tab buttons */
+  max-width: 100%;        /* Prevent overflow on small screens */
+  margin: 0 auto;         /* Center the form horizontally */
+  padding: 24px 0 20px 0;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 18px;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Students: Make input fields and submit button fit inside the form and align with the card */
+.campus-fundraiser-form input[type="text"],
+.campus-fundraiser-form input[type="email"],
+.campus-fundraiser-form .give-btn {
+  width: 90%;           /* Fill most of the form width, leave space at sides */
+  max-width: 380px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Responsive: On small screens, make the form and fields fit the screen */
+@media (max-width: 500px) {
+  .campus-fundraiser-form {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 12px 2vw 10px 2vw;
+  }
+  .campus-fundraiser-form input[type="text"],
+  .campus-fundraiser-form input[type="email"],
+  .campus-fundraiser-form .give-btn {
+    width: 98%;
+    max-width: 98%;
+  }
+}
+
+/* Students: Make the card info form wider to match the tab buttons and keep it responsive */
+.card-info-form {
+  width: 440px;           /* Match the width of the two tab buttons */
+  max-width: 98vw;        /* Prevent overflow on small screens */
+  margin: 0 auto;
+  padding: 24px 0 20px 0;
+  box-sizing: border-box;
+  background: transparent; /* Transparent background for card info form */
+  border-radius: 18px;
+  box-shadow: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Make input fields and button fit inside the card info form */
+.card-info-form input[type="text"],
+.card-info-form input[type="email"],
+.card-info-form .give-btn {
+  width: 90%;
+  max-width: 380px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Responsive: On small screens, make the card info form and fields fit the screen */
+@media (max-width: 500px) {
+  .card-info-form {
+    width: 98vw;
+    max-width: 98vw;
+    padding: 12px 2vw 10px 2vw;
+  }
+  .card-info-form input[type="text"],
+  .card-info-form input[type="email"],
+  .card-info-form .give-btn {
+    width: 98%;
+    max-width: 98%;
+  }
+}
+
+/* Make all buttons show pointer cursor */
+button,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer; /* Show pointer cursor on hover */
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 60px; /* fixed navbar height */
+  padding: 0 20px;
+}
+
+.navbar-logo {
+  height: 25px; /* adjust size as needed */
+  margin-right: 20px; /* spacing between logo and nav items */
+  object-fit: contain;
 }

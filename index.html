@@ -9,18 +9,53 @@
 <body>
 
   <header>
-    <!-- Replace the text logo with the image logo for charity: water -->
-    <div>
-      <!-- Students: This is the logo image for the website header -->
-      <img src="img/haritywater_logo_horizontal_BlackText (2).png" alt="charity: water logo" style="height:40px;">
-    </div>
+    <a href="/">
+  <img src="img/charitywater_logo_horizontal_BlackText (2).png" alt="charity: water logo" class="navbar-logo" />
+</a>
     <nav>
-      <a href="#">GET INVOLVED</a>
-      <a href="#">MEET THE MISSION</a>
-      <a href="#">STUDENT HUB</a>
-      <a href="#">WHY WATER?</a>
-      <!-- Students: This is a button styled link for "GIVE 💧" to make it stand out -->
-      <a href="#" class="give-btn-nav">GIVE 💧</a>
+      <!-- Students: This is the dropdown for "Get Involved" -->
+      <span class="get-involved-dropdown">
+        <a href="#">GET INVOLVED</a>
+        <div class="get-involved-dropdown-content">
+          <a href="#">Start a Fundraiser</a>
+          <a href="#">Volunteer Near You</a>
+          <a href="#">Become an Ambassador</a>
+          <a href="#">Monthly Giving Club</a>
+          <a href="#">Merch for a Mission</a>
+        </div>
+      </span>
+      <!-- Students: This is the dropdown for "Meet the Mission" -->
+      <span class="meet-mission-dropdown">
+        <a href="#">MEET THE MISSION</a>
+        <div class="meet-mission-dropdown-content">
+          <a href="#">Our Story</a>
+          <a href="#">How We Work</a>
+          <a href="#">Impact Tracker</a>
+          <a href="#">Our Team &amp; Culture</a>
+        </div>
+      </span>
+      <!-- Students: This is the dropdown for "Student Hub" -->
+      <span class="student-hub-dropdown">
+        <a href="#">STUDENT HUB</a>
+        <div class="student-hub-dropdown-content">
+          <a href="#">Campus Campaign Toolkit</a>
+          <a href="#">Success Stories</a>
+          <a href="#">Intern With Us</a>
+          <a href="#">Clubs &amp; Chapters</a>
+          <a href="#">College Ambassador Portal</a>
+        </div>
+      </span>
+      <!-- Students: This is the dropdown for "Why Water?" -->
+      <span class="why-water-dropdown">
+        <a href="#">WHY WATER?</a>
+        <div class="why-water-dropdown-content">
+          <a href="#">The Global Water Crisis</a>
+          <a href="#">What Clean Water Does</a>
+          <a href="#">Real People. Real Change</a>
+          <a href="#">Sustainability &amp; Tech</a>
+        </div>
+      </span>
+      <a href="#" class="highlight-link">GIVE 💧</a>
     </nav>
   </header>
 
@@ -32,14 +67,13 @@
         <h1>WATER YOU<br>CAN BELIEVE IN</h1>
         <!-- Tab buttons for giving type, now under the h1 and outside the donation box -->
         <div class="tab-row">
-          <!-- "Give Once" is already a button, but let's add a comment to help students understand -->
-          <!-- Students: This is a button for one-time giving -->
-          <button class="tab-btn active">Give Once</button>
-          <button class="tab-btn">Give Monthly</button>
+          <!-- Students: These buttons are fully clickable and only one stays yellow at a time -->
+          <button type="button" class="tab-btn active" id="give-once-btn">Give Once</button>
+          <button type="button" class="tab-btn" id="give-monthly-btn">Give Monthly</button>
         </div>
       </div>
 
-      <div class="donation-box">
+      <div class="donation-box" id="donation-box">
         <!-- Headline and supporting text -->
         <div class="donation-headline">One quick gift delivers clean water and lasting hope - real lives with real stories and real change.</div>
         <!-- Students: This is a horizontal dashed line for visual separation -->
@@ -47,37 +81,39 @@
         <!-- Amount buttons -->
         <div class="amounts">
           <button>$5</button>
-          <button >$10</button>
+          <button>$10</button>
           <button>$15</button>
         </div>
         <!-- Place the placeholder buttons in a container for side-by-side layout -->
+        <!-- Students: This container uses flex to put the buttons next to each other -->
         <div class="placeholder-row">
-          <button class="placeholder-btn">Other amount</button>
-          <button class="placeholder-btn">Start a campus fundraiser</button>
+          <!-- Students: When you click "Other amount", it turns yellow and lets you type a dollar amount -->
+          <button class="placeholder-btn" id="other-amount-btn">Other amount</button>
+          <input type="number" id="other-amount-input" placeholder="$" min="1" style="display:none; width:100%; height:48px; margin:5px 0; border-radius:5px; border:2px solid #FFC907; text-align:center; font-size:14px;" />
+          <!-- Students: When you click "Start a campus fundraiser", you can type your school name -->
+          <button class="placeholder-btn" id="fundraiser-btn">Start a campus fundraiser</button>
+          <input type="text" id="fundraiser-input" placeholder="Enter your school name" style="display:none; width:100%; height:48px; margin:5px 0; border-radius:5px; border:2px solid #FFC907; text-align:center; font-size:14px;" />
         </div>
-        <!-- Move down the Give Now button and payment icons by wrapping them in a container with extra margin on top -->
-        <div class="give-and-pay">
-          <!-- Students: This button now takes users to a thank you page -->
-          <a href="thankyou.html" class="give-btn">Give Water Now</a>
-          <!-- Payment icons row (now using buttons for hover effect) -->
-          <div class="payment-icons">
-            <!-- Students: Each payment icon is now a link that opens in a new tab -->
-            <a href="https://venmo.com/" target="_blank" rel="noopener">
-              <button title="Venmo">
-                <img src="img/App_Icon.webp" alt="Venmo" style="width:24px; height:24px;">
-              </button>
-            </a>
-            <a href="https://www.apple.com/apple-pay/" target="_blank" rel="noopener">
-              <button title="Apple Pay">
-                <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt="Apple Pay" style="width:40px; height:24px;">
-              </button>
-            </a>
-            <a href="https://cash.app/" target="_blank" rel="noopener">
-              <button title="Cash App">
-                <img src="img/Square_Cash_app_logo.svg.png" alt="Cash App" style="width:24px; height:24px;">
-              </button>
-            </a>
-          </div>
+        <!-- CTA button -->
+        <!-- Students: This button will show a simple card form when clicked -->
+        <button class="give-btn" onclick="showCardForm(event)">Give Water Now</button>
+        <!-- Payment icons row (now using buttons for hover effect) -->
+        <div class="payment-icons">
+          <!-- Venmo button now uses an image instead of emoji -->
+          <!-- Students: This button will open the Venmo website in a new tab -->
+          <button title="Venmo" onclick="window.open('https://venmo.com/', '_blank')">
+            <img src="img/App_Icon.webp" alt="Venmo" style="width:24px; height:24px;">
+          </button>
+          <!-- Apple Pay button now uses an image instead of emoji -->
+          <!-- Students: This button will open the Apple Pay page in a new tab -->
+          <button title="Apple Pay" onclick="window.open('https://www.apple.com/apple-pay/', '_blank')">
+            <img src="img/Apple_Pay_Mark_RGB_041619.svg" alt="Apple Pay" style="width:40px; height:24px;">
+          </button>
+          <!-- Cash App button now uses an image instead of emoji -->
+          <!-- Students: This button will open the Cash App website in a new tab -->
+          <button title="Cash App" onclick="window.open('https://cash.app/', '_blank')">
+            <img src="img/Square_Cash_app_logo.svg.png" alt="Cash App" style="width:24px; height:24px;">
+          </button>
         </div>
         <!-- Students: This is a horizontal dashed line for visual separation -->
         <hr style="border: none; border-top: 1px dashed #ccc; margin: 10px 0;">
@@ -87,71 +123,218 @@
         </div>
       </div>
     </div>
-    <!-- Students: This puts the social proof message at the bottom right of the hero image -->
-    <div class="social-proof-bottom">
-      Join <span class="highlight" id="student-count">0</span> students who gave this month
-    </div>
   </section>
 
-  <!-- Students: This script adds a water droplet shower effect when the "Give Water Now" button is clicked -->
+  <!-- Students: The social proof message is now inside the hero section, anchored to the bottom-left -->
+  <div class="social-proof">
+    Join <span class="highlight" id="student-count">0</span> students who gave this month
+  </div>
+
+  <!-- Students: This script counts up the number when the page loads -->
   <script>
-    // Wait until the page is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Find the "Give Water Now" button
-      var giveBtn = document.querySelector('.give-btn');
-      if (giveBtn) {
-        giveBtn.addEventListener('click', function(e) {
-          // Number of droplets
-          var dropletCount = 30;
-          for (var i = 0; i < dropletCount; i++) {
-            // Create a span for the droplet
-            var droplet = document.createElement('span');
-            droplet.textContent = '💧';
-            droplet.className = 'droplet-emoji';
-            // Random horizontal position
-            droplet.style.left = (Math.random() * 100) + 'vw';
-            // Random animation duration and delay
-            droplet.style.animationDuration = (1 + Math.random() * 1.5) + 's';
-            droplet.style.animationDelay = (Math.random() * 0.5) + 's';
-            // Add to the body
-            document.body.appendChild(droplet);
-            // Remove after animation
-            droplet.addEventListener('animationend', function() {
-              this.remove();
-            });
+    // Students: This function animates the number from 0 to 1242
+    let count = 0;
+    let target = 1242;
+    let speed = 10; // Smaller is faster
+
+    function countUp() {
+      if (count < target) {
+        count += 7; // Increase this number to count faster
+        if (count > target) count = target;
+        document.getElementById('student-count').textContent = count.toLocaleString();
+        setTimeout(countUp, speed);
+      }
+    }
+
+    // Start counting when the page loads
+    window.onload = countUp;
+
+    // Students: This function shows a card form or a campus fundraiser form depending on selection
+    function showCardForm(event) {
+      event.preventDefault();
+      var box = document.getElementById('donation-box');
+      var fundraiserBtn = document.getElementById('fundraiser-btn');
+      var fundraiserInput = document.getElementById('fundraiser-input');
+      // Show a single card with both forms inside, switching content based on selection
+      box.innerHTML = `
+        <div class="card-info-form">
+          ${
+            (fundraiserBtn && fundraiserBtn.classList.contains('active')) ?
+            `
+            <!-- Students: Campus fundraiser form inside the card -->
+            <div class="donation-headline" style="margin-bottom: 8px;">Start a Campus Fundraiser</div>
+            <form id="fundraiser-contact-form" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;">
+              <input type="text" placeholder="First name" required style="width:90%;max-width:380px;">
+              <input type="text" placeholder="Last name" required style="width:90%;max-width:380px;">
+              <input type="email" placeholder="Email" required style="width:90%;max-width:380px;">
+              <button type="submit" class="give-btn" style="width:90%;max-width:380px;">Submit</button>
+            </form>
+            <div class="supporting-note" style="margin-top:12px;">
+              Thank you for helping bring clean water to more people!
+            </div>
+            `
+            :
+            `
+            <!-- Students: Card payment form inside the card -->
+            <div class="donation-headline" style="margin-bottom:0; margin-top:-10px;">Enter your card information</div>
+            <form onsubmit="goToThankYou(event)" style="width:100%;display:flex;flex-direction:column;align-items:center;">
+              <div style="display: flex; gap: 4px; justify-content: center; margin-bottom: 0;">
+                <label style="flex:1;">
+                  <input type="text" placeholder="First name" style="width:90%;padding:6px;font-size:16px;margin:2px 0 2px 0;">
+                </label>
+                <label style="flex:1;">
+                  <input type="text" placeholder="Last name" style="width:90%;padding:6px;font-size:16px;margin:2px 0 2px 0;">
+                </label>
+              </div>
+              <div style="height:2px;"></div>
+              <label>
+                Card Number<br>
+                <input type="text" placeholder="1234 5678 9012 3456" maxlength="15" style="width:100%;padding:6px;margin:0 0 1px 0;">
+              </label>
+              <div style="display: flex; gap: 4px; justify-content: center; margin-bottom: 6px;">
+                <label style="flex:1;">
+                  Expiry Date<br>
+                  <input type="text" placeholder="MM/YY" maxlength="5" style="width:80%;padding:6px;margin:2px 0;">
+                </label>
+                <label style="flex:1;">
+                  CVC<br>
+                  <input type="text" placeholder="123" maxlength="4" style="width:80%;padding:6px;margin:2px 0;">
+                </label>
+              </div>
+              <br>
+              <button type="submit" class="give-btn" style="width:90%;max-width:380px;margin:4px 0;">Submit Payment</button>
+            </form>
+            <div class="supporting-note" style="margin-top:12px;">
+              Your gift goes 100% to clean water projects.
+            </div>
+            `
           }
+        </div>
+      `;
+      // Add event listener for the fundraiser form if it's shown
+      var contactForm = document.getElementById('fundraiser-contact-form');
+      if (contactForm) {
+        contactForm.onsubmit = function(e) {
+          e.preventDefault();
+          window.location.href = "contact.html";
+        };
+      }
+    }
+
+    // Students: This function takes the user to the thank you page after submitting the card form
+    function goToThankYou(event) {
+      event.preventDefault();
+      window.location.href = "thankyou.html";
+    }
+
+    // Students: This code lets you select any donation or placeholder button and keeps it highlighted
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all amount and placeholder buttons inside the donation box
+      var box = document.getElementById('donation-box');
+      function updateButtonSelection() {
+        var amountBtns = box.querySelectorAll('.amounts button');
+        var otherBtn = box.querySelector('#other-amount-btn');
+        var otherInput = box.querySelector('#other-amount-input');
+        var fundraiserBtn = box.querySelector('#fundraiser-btn');
+        var fundraiserInput = box.querySelector('#fundraiser-input');
+        var allBtns = Array.from(amountBtns).concat([otherBtn, fundraiserBtn]);
+
+        // Handle amount buttons
+        amountBtns.forEach(function(btn) {
+          btn.addEventListener('click', function() {
+            allBtns.forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            otherInput.style.display = 'none';
+            otherBtn.textContent = 'Other amount';
+            otherBtn.style.display = '';
+            fundraiserInput.style.display = 'none';
+            fundraiserBtn.textContent = 'Start a campus fundraiser';
+            fundraiserBtn.style.display = '';
+          });
+        });
+
+        // Handle "Other amount" button
+        otherBtn.addEventListener('click', function() {
+          allBtns.forEach(function(b) { b.classList.remove('active'); });
+          otherBtn.classList.add('active');
+          otherBtn.style.display = 'none';
+          otherInput.style.display = 'inline-block';
+          otherInput.value = '';
+          otherInput.focus();
+          fundraiserInput.style.display = 'none';
+          fundraiserBtn.textContent = 'Start a campus fundraiser';
+          fundraiserBtn.style.display = '';
+        });
+
+        // When user types in the input, keep "Other amount" highlighted
+        otherInput.addEventListener('focus', function() {
+          allBtns.forEach(function(b) { b.classList.remove('active'); });
+          otherBtn.classList.add('active');
+        });
+
+        // If user clicks away and input is empty, hide input and restore button
+        otherInput.addEventListener('blur', function() {
+          setTimeout(function() {
+            if (!otherInput.value) {
+              otherInput.style.display = 'none';
+              otherBtn.textContent = 'Other amount';
+              otherBtn.classList.remove('active');
+              otherBtn.style.display = '';
+            }
+          }, 100);
+        });
+
+        // Handle "Start a campus fundraiser" button
+        fundraiserBtn.addEventListener('click', function() {
+          allBtns.forEach(function(b) { b.classList.remove('active'); });
+          fundraiserBtn.classList.add('active');
+          fundraiserBtn.style.display = 'none';
+          fundraiserInput.style.display = 'inline-block';
+          fundraiserInput.value = '';
+          fundraiserInput.focus();
+          otherInput.style.display = 'none';
+          otherBtn.textContent = 'Other amount';
+          otherBtn.style.display = '';
+        });
+
+        // When user types in the input, keep "Start a campus fundraiser" highlighted
+        fundraiserInput.addEventListener('focus', function() {
+          allBtns.forEach(function(b) { b.classList.remove('active'); });
+          fundraiserBtn.classList.add('active');
+        });
+
+        // If user clicks away and input is empty, hide input and restore button
+        fundraiserInput.addEventListener('blur', function() {
+          setTimeout(function() {
+            if (!fundraiserInput.value) {
+              fundraiserInput.style.display = 'none';
+              fundraiserBtn.textContent = 'Start a campus fundraiser';
+              fundraiserBtn.classList.remove('active');
+              fundraiserBtn.style.display = '';
+            }
+          }, 100);
+        });
+      }
+      updateButtonSelection();
+    });
+
+    // Students: This code lets you select "Give Once" or "Give Monthly" and keeps only one highlighted
+    document.addEventListener('DOMContentLoaded', function() {
+      var giveOnceBtn = document.getElementById('give-once-btn');
+      var giveMonthlyBtn = document.getElementById('give-monthly-btn');
+      if (giveOnceBtn && giveMonthlyBtn) {
+        giveOnceBtn.addEventListener('click', function(e) {
+          // When clicked, make this button yellow and the other normal
+          giveOnceBtn.classList.add('active');
+          giveMonthlyBtn.classList.remove('active');
+        });
+        giveMonthlyBtn.addEventListener('click', function(e) {
+          giveMonthlyBtn.classList.add('active');
+          giveOnceBtn.classList.remove('active');
         });
       }
     });
   </script>
-  <script>
-    // Students: This script animates the number in the social proof box from 0 to 1,242
-    document.addEventListener('DOMContentLoaded', function() {
-      // ...existing code for droplet effect...
 
-      // Count up animation for the student count
-      var countEl = document.getElementById('student-count');
-      var target = 1242; // The final number to count up to
-      var duration = 2200; // Animation duration in milliseconds (slower)
-      var start = 0;
-      var startTime = null;
-
-      function countUpStep(timestamp) {
-        if (!startTime) startTime = timestamp;
-        var progress = timestamp - startTime;
-        var current = Math.min(Math.floor(progress / duration * target), target);
-        countEl.textContent = current.toLocaleString();
-        if (current < target) {
-          requestAnimationFrame(countUpStep);
-        } else {
-          countEl.textContent = target.toLocaleString();
-        }
-      }
-
-      if (countEl) {
-        requestAnimationFrame(countUpStep);
-      }
-    });
-  </script>
 </body>
 </html>
