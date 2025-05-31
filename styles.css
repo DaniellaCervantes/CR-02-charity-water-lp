@@ -347,8 +347,7 @@ header nav a:hover {
     margin-bottom: 16px;
   }
   .donation-box {
-    margin: 0 0 0 0;      /* Remove previous right shift */
-    margin-left: -15px;    /* Shift donation box a little to the left on mobile */
+    margin: 0 0 0 25px;          /* Shift donation box to the right on mobile */
     width: 100%;
     max-width: 420px;
     box-sizing: border-box;
