@@ -347,7 +347,7 @@ header nav a:hover {
     margin-bottom: 16px;
   }
   .donation-box {
-    margin: 0 auto;              /* Center donation box */
+    margin: 0 0 0 30px;          /* Shift donation box to the right on mobile */
     width: 100%;
     max-width: 420px;            /* Keep max width for readability */
     box-sizing: border-box;
