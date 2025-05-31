@@ -377,6 +377,13 @@ header nav a:hover {
   }
 }
 
+/* On mobile, hide the donation box */
+@media (max-width: 700px) {
+  .donation-box {
+    display: none;
+  }
+}
+
 /* On mobile, hide the donation box and tab-row, and show a big "Give Water Today" button */
 @media (max-width: 700px) {
   .donation-box {
