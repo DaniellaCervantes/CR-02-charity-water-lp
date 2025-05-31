@@ -54,7 +54,7 @@ header nav a:hover {
   background: url('img/Madagascar_2019_CG-4246.jpg') no-repeat center bottom/cover;
   color: white;
   /* Students: Make the hero section fill the entire screen before scrolling */
-  min-height: 95vh; /* Increased from 90vh to 100vh for a bigger hero image */
+  min-height: 93vh; /* Increased from 90vh to 100vh for a bigger hero image */
   padding: 0 20px;   /* Remove top padding so image fits before the fold */
   display: flex;
   justify-content: flex-end;
@@ -315,12 +315,12 @@ header nav a:hover {
   font-weight: bold;
 }
 
-/* Social proof message anchored to the bottom-left of the hero section */
+/* Social proof message: absolute on desktop */
 .social-proof {
   position: absolute;
   left: 20px;
   bottom: 20px;
-  background: rgba(0,0,0,0.4); /* Students: Made the background even more transparent */
+  background: rgba(0,0,0,0.4);
   color: #fff;
   padding: 15px;
   text-align: center;
@@ -330,6 +330,33 @@ header nav a:hover {
   opacity: 0.95;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   margin: 0;
+}
+
+/* On mobile, stack social proof below donation box */
+@media (max-width: 700px) {
+  .hero-content {
+    align-items: center;
+  }
+  .social-proof {
+    position: static;
+    left: auto;
+    bottom: auto;
+    margin: 16px 0 0 0;
+    background: rgba(0,0,0,0.15);
+    /* Make all text white and bold except the highlight */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 10px;
+    width: 100%;
+    max-width: 98vw;
+  }
+  .social-proof .highlight {
+    color: #FFC907;
+    font-weight: bold;
+  }
 }
 
 .highlight {
@@ -767,26 +794,67 @@ input[type="submit"] {
   }
 }
 
-/* Donation box responsive width for mobile */
-.donation-box,
-.card-info-form,
-.campus-fundraiser-form {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  box-sizing: border-box;
+/* Show hamburger menu and hide nav links when nav links would overlap or stack */
+@media (max-width: 950px) {
+  /* Show the hamburger menu button */
+  .nav-toggle {
+    display: block;
+  }
+  /* Hide the navigation bar by default on small screens */
+  #main-nav {
+    display: none;
+  }
+  /* Show the navigation bar when hamburger is toggled */
+  #main-nav.nav-open {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: #f8f8f8;
+    width: 100vw;
+    z-index: 99;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    max-height: 500px;
+    overflow: auto;
+    padding-bottom: 12px;
+    transition: max-height 0.3s;
+  }
+  #main-nav > * {
+    width: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  .get-involved-dropdown-content,
+  .meet-mission-dropdown-content,
+  .student-hub-dropdown-content,
+  .why-water-dropdown-content {
+    position: static;
+    box-shadow: none;
+    min-width: 0;
+    background: #fff;
+    border-radius: 0;
+    margin-top: 0;
+  }
 }
 
-@media (max-width: 700px) {
-  .donation-box,
-  .card-info-form,
-  .campus-fundraiser-form {
-    width: 98vw;
-    max-width: 98vw;
-    padding: 8px 2vw;
+/* On larger screens, always show nav and hide burger */
+@media (min-width: 951px) {
+  .nav-toggle {
+    display: none !important;
   }
-  .donation-box input,
-  .donation-box button {
-    font-size: 15px;
+  #main-nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    background: none;
+    box-shadow: none;
+    max-height: none;
+    padding-bottom: 0;
+    width: auto;
   }
 }
