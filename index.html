@@ -9,12 +9,18 @@
 <body>
 
   <header>
-   <a href="#hero">
-  <img src="img/charitywater_logo_horizontal_BlackText (2).png" 
-       alt="charity: water logo" 
-       class="navbar-logo" />
-</a>
-    <nav>
+    <!-- Logo on the left -->
+    <a href="#hero" class="navbar-logo-link">
+      <img src="img/charitywater_logo_horizontal_BlackText (2).png" 
+           alt="charity: water logo" 
+           class="navbar-logo" />
+    </a>
+    <!-- Hamburger menu button for mobile -->
+    <button class="nav-toggle" id="nav-toggle" aria-label="Open navigation">
+      &#9776;
+    </button>
+    <!-- Navigation bar -->
+    <nav id="main-nav">
       <!-- Students: This is the dropdown for "Get Involved" -->
       <span class="get-involved-dropdown">
         <a href="#">GET INVOLVED</a>
@@ -62,7 +68,7 @@
   </header>
 
   <!-- The hero section now has a background image using inline CSS -->
-  <section class="hero" style="background-image: url('img/Madagascar_2019_CG-4246.jpg'); background-size: cover; background-position: center;">
+  <section class="hero" id="hero" style="background-image: url('img/Madagascar_2019_CG-4246.jpg'); background-size: cover; background-position: center;">
     <!-- New container to stack hero text and donation box -->
     <div class="hero-content">
       <div class="hero-text">
@@ -336,11 +342,17 @@
         });
       }
     });
+
+    // Hamburger menu toggle for mobile navigation
+    document.addEventListener('DOMContentLoaded', function() {
+      var navToggle = document.getElementById('nav-toggle');
+      var mainNav = document.getElementById('main-nav');
+      navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('nav-open');
+        navToggle.classList.toggle('open');
+      });
+    });
   </script>
 
 </body>
-<section id="hero">
-  <!-- your hero content -->
-</section>
-
 </html>
