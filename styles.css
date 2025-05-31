@@ -407,6 +407,11 @@ header nav a:hover {
   }
 }
 
+/* Hide the Give Water Today button everywhere */
+.give-water-today-mobile {
+  display: none !important;
+}
+
 /* By default, hide the mobile button on desktop */
 .give-water-today-mobile {
   display: none;
