@@ -334,6 +334,10 @@ header nav a:hover {
 
 /* Students: Center hero content and donation box on mobile for better appearance */
 @media (max-width: 700px) {
+  .hero {
+    min-height: 100vh; /* Make hero section fill the whole screen on mobile */
+    padding: 0 0 0 0;  /* Remove side padding for full width */
+  }
   .hero-content {
     align-items: center;         /* Center all content horizontally */
     width: 100%;                 /* Take full width */
