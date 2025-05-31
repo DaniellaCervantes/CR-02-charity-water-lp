@@ -332,6 +332,41 @@ header nav a:hover {
   margin: 0;
 }
 
+/* Students: Center hero content and donation box on mobile for better appearance */
+@media (max-width: 700px) {
+  .hero-content {
+    align-items: center;         /* Center all content horizontally */
+    width: 100%;                 /* Take full width */
+    padding: 0 10px;             /* Add horizontal padding */
+    box-sizing: border-box;
+  }
+  .hero-text {
+    text-align: center;          /* Center hero text */
+    width: 100%;
+    padding: 0 5px;              /* Small side padding */
+    margin-bottom: 16px;
+  }
+  .donation-box {
+    margin: 0 auto;              /* Center donation box */
+    width: 100%;
+    max-width: 420px;            /* Keep max width for readability */
+    box-sizing: border-box;
+  }
+  .tab-row {
+    justify-content: center;     /* Center tab buttons */
+    width: 100%;
+  }
+  .social-proof {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 98vw;
+    text-align: center;
+    left: auto;
+    right: auto;
+  }
+}
+
 /* On mobile, stack social proof below donation box */
 @media (max-width: 700px) {
   .hero-content {
