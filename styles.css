@@ -332,6 +332,12 @@ header nav a:hover {
   margin: 0;
 }
 
+/* Make the count up number yellow for social proof */
+.yellow-count {
+  color: #FFC907 !important; /* Yellow color for the number */
+  font-weight: bold;
+}
+
 /* Students: Center hero content and donation box on mobile for better appearance */
 @media (max-width: 700px) {
   .hero {
@@ -371,69 +377,39 @@ header nav a:hover {
   }
 }
 
-/* On mobile, stack social proof below donation box */
+/* On mobile, hide the donation box and tab-row, and show a big "Give Water Today" button */
 @media (max-width: 700px) {
-  .hero-content {
-    align-items: center;
+  .donation-box {
+    display: none; /* Hide the donation box on mobile */
   }
-  .social-proof {
-    position: static;
-    left: auto;
-    bottom: auto;
-    margin: 16px 0 0 0;
-    background: rgba(0,0,0,0.15);
-    /* Make all text white and bold except the highlight */
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: none;
+  .tab-row {
+    display: none; /* Hide the Give Once/Give Monthly buttons on mobile */
+  }
+  .give-water-today-mobile {
+    display: block; /* Show the mobile button */
+    margin: 32px auto 0 auto; /* Center the button with space above */
+    background: #FFC907;
+    color: #000;
+    border: none;
     border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    max-width: 98vw;
-  }
-  .social-proof .highlight {
-    color: #FFC907;
+    font-size: 22px;
     font-weight: bold;
+    padding: 18px 0;
+    width: 90%;
+    max-width: 340px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    transition: background 0.2s;
+  }
+  .give-water-today-mobile:hover {
+    background: #e6b800;
   }
 }
 
-.highlight {
-  color: #FFC907;
-  font-weight: bold;
-}
-
-/* Container to put placeholder buttons side by side */
-.placeholder-row {
-  display: flex; /* Put children in a row */
-  justify-content: center; /* Center the buttons */
-  gap: 4px; /* Smaller gap between placeholder buttons */
-}
-
-/* Style for placeholder buttons to look like input fields */
-.placeholder-btn {
-  /* Make the width similar to the amount buttons */
-  padding: 10px 40px; /* Same left/right padding as .amounts button */
-  margin: 2px;           /* Smaller margin between buttons */
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  background: #fafafa;
-  color: #888;
-  font-size: 14px; /* Match the font size of the main buttons */
-  height: 48px; /* Ensure same height as other buttons */
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, border 0.2s;
-  /* Remove width: 48% so button size is based on padding, like amount buttons */
-  white-space: nowrap; /* Prevents the text from wrapping to a new line */
-  padding: 8px 10px;   /* Adjusts padding so the button isn't too wide */
-}
-
-/* Hover effect for placeholder buttons */
-.placeholder-btn:hover {
-  background: #FFC907;
-  color: #000;
-  border: 1px solid #FFC907;
+/* By default, hide the mobile button on desktop */
+.give-water-today-mobile {
+  display: none;
 }
 
 /* Students: Animation for the hero headline to fade in and slide up */
